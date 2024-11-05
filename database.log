@@ -112,3 +112,9 @@
 1730819826208|4|statement|select distinct t1_0.id,p1_0.id,p1_0.description,p1_0.name,t1_0.status,t1_0.title,u1_0.id,u1_0.email,u1_0.name from tasks t1_0 left join users u1_0 on u1_0.id=t1_0.user_id left join projects p1_0 on p1_0.id=t1_0.project_id offset 0 rows fetch first 20 rows only
 1730819826230|1|statement|select u1_0.project_id,u1_1.id,u1_1.email,u1_1.name from user_project u1_0 join users u1_1 on u1_1.id=u1_0.user_id where u1_0.project_id=1
 1730819826231|0|statement|select u1_0.project_id,u1_1.id,u1_1.email,u1_1.name from user_project u1_0 join users u1_1 on u1_1.id=u1_0.user_id where u1_0.project_id=23
+1730820079921|9|statement|select * from information_schema.sequences
+1730820079967|0|statement|select * from "public"."projects" where 1=0
+1730820079974|0|statement|select * from "public"."users" where 1=0
+1730820079991|0|statement|select * from "public"."projects" where 1=0
+1730820079994|0|statement|select * from "public"."users" where 1=0
+1730820081833|1|statement|CREATE MATERIALIZED VIEW IF NOT EXISTS project_task_count AS SELECT p.id AS project_id, p.name AS project_name, COUNT(t.id) AS task_count FROM projects p LEFT JOIN tasks t ON t.project_id = p.id GROUP BY p.id, p.name
